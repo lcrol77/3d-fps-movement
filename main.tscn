@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://c2e22k52rqw7v"]
+
+[ext_resource type="PackedScene" uid="uid://ciitgpbehl4te" path="res://box.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://cocmbb85va7pe" path="res://walls.tscn" id="2_0xm2m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ProceduralSkyMaterial_7dm0k")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.3
+tonemap_mode = 4
+glow_enabled = true
+glow_hdr_threshold = 0.7
+
+[sub_resource type="BoxMesh" id="BoxMesh_7dm0k"]
+size = Vector3(10, 0.2, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ig7tw"]
+albedo_color = Color(0.18039216, 0.2, 0.3372549, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+size = Vector3(10, 1, 10)
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0xm2m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.25881907, 0.6208852, -0.73994213, 0, 0.7660445, 0.64278764, 0.9659258, -0.1663657, 0.19826692, 0, 6.25, 0)
+shadow_enabled = true
+shadow_normal_bias = 2.7
+directional_shadow_mode = 0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 15.0
+
+[node name="Background" type="Node3D" parent="."]
+
+[node name="Floor" type="MeshInstance3D" parent="Background"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("BoxMesh_7dm0k")
+surface_material_override/0 = SubResource("StandardMaterial3D_ig7tw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Background/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Background/Floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="Box" parent="Background" instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3175162, 0.5, -2.508016)
+
+[node name="Walls" parent="Background" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="Walls2" parent="Background" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5, 0, 0)
+
+[node name="Walls3" parent="Background" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -5, 0, 0)
+
+[node name="Walls4" parent="Background" instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
