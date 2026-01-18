@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgf36t7q0oybc"]
+
+[ext_resource type="Script" uid="uid://cjsidl1wam3a4" path="res://player.gd" id="1_4flbx"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_sh265"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sh265"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sh265"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_4flbx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_sh265")
+
+[node name="Rig" type="Node3D" parent="."]
+
+[node name="MeshBody" type="MeshInstance3D" parent="Rig"]
+mesh = SubResource("CapsuleMesh_sh265")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_sh265")
+
+[node name="Head" type="Node3D" parent="Rig"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0706983, 0)
+
+[node name="CameraFPS" type="Camera3D" parent="Rig/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028474808, 0)
+
+[node name="FireOrigin" type="Node3D" parent="Rig/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0116632)

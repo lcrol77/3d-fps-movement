@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2e22k52rqw7v"]
+[gd_scene load_steps=10 format=3 uid="uid://c2e22k52rqw7v"]
 
+[ext_resource type="PackedScene" uid="uid://dgf36t7q0oybc" path="res://player.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ciitgpbehl4te" path="res://box.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cocmbb85va7pe" path="res://walls.tscn" id="2_0xm2m"]
 
@@ -40,6 +41,9 @@ directional_shadow_mode = 0
 directional_shadow_fade_start = 1.0
 directional_shadow_max_distance = 15.0
 
+[node name="Player" parent="." instance=ExtResource("1_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
 [node name="Background" type="Node3D" parent="."]
 
 [node name="Floor" type="MeshInstance3D" parent="Background"]
@@ -54,7 +58,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 shape = SubResource("BoxShape3D_7dm0k")
 
 [node name="Box" parent="Background" instance=ExtResource("1_ig7tw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3175162, 0.5, -2.508016)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0517902, 0.5, 0)
 
 [node name="Walls" parent="Background" instance=ExtResource("2_0xm2m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
