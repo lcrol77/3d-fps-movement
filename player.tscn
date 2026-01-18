@@ -16,7 +16,7 @@ script = ExtResource("1_4flbx")
 shape = SubResource("CylinderShape3D_4flbx")
 
 [node name="Rig" type="Node3D" parent="."]
-physics_interpolation_mode = 1
+physics_interpolation_mode = 2
 
 [node name="MeshBody" type="MeshInstance3D" parent="Rig"]
 mesh = SubResource("CylinderMesh_onrkg")
@@ -24,12 +24,11 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_sh265")
 
 [node name="Head" type="Node3D" parent="Rig"]
-physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.175581, 0)
 
 [node name="CameraFPS" type="Camera3D" parent="Rig/Head"]
-physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028474808, 0)
+current = true
 
 [node name="FireOrigin" type="Node3D" parent="Rig/Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0116632)
