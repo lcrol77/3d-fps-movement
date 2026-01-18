@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2e22k52rqw7v"]
+[gd_scene load_steps=11 format=3 uid="uid://c2e22k52rqw7v"]
 
+[ext_resource type="Script" uid="uid://dtiih0x3bcib8" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dgf36t7q0oybc" path="res://player.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ciitgpbehl4te" path="res://box.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://cocmbb85va7pe" path="res://walls.tscn" id="2_0xm2m"]
@@ -29,6 +30,7 @@ albedo_color = Color(0.18039216, 0.2, 0.3372549, 1)
 size = Vector3(10, 1, 10)
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_1bvp3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
