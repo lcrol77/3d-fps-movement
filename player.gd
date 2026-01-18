@@ -21,4 +21,4 @@ func _ready() -> void:
 func _input(input_event: InputEvent) -> void:
 	if input_event is InputEventMouseMotion:
 		_yaw -= input_event.screen_relative.x * MOUSE_SENSITIVITY * 0.001
-		
+		rig.rotation = Vector3(0,_yaw,0)
